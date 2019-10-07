@@ -1,0 +1,8 @@
+#!/bin/bash
+COMMAND_FILE=/tmp/command_to_run
+SECONDS_DATE=`date +%s`                                                                                       
+DESTINATION=$2
+find $1 -iname *.$3 -printf "mkdir -vp ${DESTINATION}%AY/%Am/%Ad/;mv -v '%p' '${DESTINATION}%AY/%Am/%Ad/${SECONDS_DATE}_%f';\n" > $COMMAND_FILE
+bash $COMMAND_FILE
+rm $COMMAND_FILE
+

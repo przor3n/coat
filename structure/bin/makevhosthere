@@ -1,0 +1,19 @@
+#!/bin/bash
+
+HERE=`pwd`
+
+SERVERNAME=$1
+DOCUMENTROOT=$HERE
+
+APACHESITES="/etc/apache2/sites-available/"
+TEMPLATE="$HOME/Templates/apache-virtualhost.conf.template"
+
+FILLEDTEMPLATE=`python $HOME/bin/scripts/fillTemplate.py $TEMPLATE SERVERNAME:$SERVERNAME DOCUMENT_ROOT:$DOCUMENTROOT`
+
+#dodajemy config i odpalamy vhost
+`echo "$FILLEDTEMPLATE" | cat > $APACHESITES/$SERVERNAME.conf` 
+`a2ensite $SERVERNAME` #krzyczy ze Site: command not found TODO
+
+# dodaj nazwe i adres do /etc/hosts
+`echo "127.0.0.1 $SERVERNAME" | cat >> /etc/hosts`
+`service apache2 restart`

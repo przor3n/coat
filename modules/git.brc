@@ -1,0 +1,68 @@
+
+auto-commit() {
+      gitwatch.sh -l 2 $(pwd) &>/dev/null &disown
+      echo $! > .autosave
+}
+
+# git section
+alias ga='git add'
+alias gs='git status'
+alias gb='git branch'
+alias gbv='git branch -v'
+alias gpull='git pull'
+alias gp='git push'
+alias gbranch='git rev-parse --abbrev-ref HEAD'
+
+alias git-autocommit='auto-commit'
+alias show-autocommit='ps ax | grep gitwatch.sh'
+alias stop-autocommit='kill -s KILL $(cat .autosave) && rm .autosave'
+alias stop-commits=''
+
+alias gr='git rebase'
+alias gremote='git remote -v'
+
+alias gch='git checkout'
+alias gc='git commit -a'
+
+alias gm='git merge'
+alias gf='git fetch'
+alias gfm='gf && gm'
+
+find_git_branch() {
+  # Based on: http://stackoverflow.com/a/13003854/170413
+  local branch
+  if branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null); then
+    if [[ "$branch" == "HEAD" ]]; then
+      branch='detached*'
+    fi
+    git_branch="($branch)"
+  else
+    git_branch=""
+  fi
+}
+
+find_git_dirty() {
+  local status=$(git status --porcelain 2> /dev/null)
+  if [[ "$status" != "" ]]; then
+    git_dirty='*'
+  else
+    git_dirty=''
+  fi
+}
+
+# fuzzy search for git commands
+export GIT_COMMANDS_FILE=~/.coat/git_commands
+
+unalias kit 2> /dev/null
+kit() {
+   local dest_dir=$(cat $GIT_COMMANDS_FILE | fzf )
+   if [[ $dest_dir != '' ]]; then
+      coms = $(echo $dest_dir | tr "#" " ")
+      `$dest_dir`
+   fi
+}
+export -f kit > /dev/null
+
+
+
+PROMPT_COMMAND="find_git_branch; find_git_dirty; $PROMPT_COMMAND"

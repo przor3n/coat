@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#
+#  To use this code you have to:
+#  1. create mysql user with same name as linux user
+#  2. add in mysql.conf, under [mysql]: user=USERNAME \ password=PASSWORD \
+#
+
+db=$1
+
+if [ "" != $db ]
+then
+    mysql -Nse 'show tables' $db | while read table; do mysql -e "SET FOREIGN_KEY_CHECKS = 0;drop table $table;" $db; done
+fi

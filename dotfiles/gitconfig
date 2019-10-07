@@ -1,0 +1,9 @@
+[user]
+	name = Przemek
+	email = przemyslaw.kot@gmail.com
+[core]
+	autocrlf = input
+[push]
+	default = simple
+[cola]
+	spellcheck = false

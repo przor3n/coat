@@ -1,0 +1,65 @@
+#!/bin/bash
+
+# Enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+[ -d ~/.bash/completion ] && for file in ~/.bash/completion/*; do
+  [ -f "$file" ] && source "$file"
+done
+unset file
+
+# autocomplete for ssh - user@host
+# info: http://www.commandlinefu.com/commands/view/2759/ssh-autocomplete
+complete -W "$(echo `cat ~/.bash_history | egrep '^ssh ' | sort | uniq | sed 's/^ssh //'`;)" ssh
+
+# add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
+[ -e "~/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
+
+# Add tab completion for openvpn configs based on ~/.openvpn/config, ignoring wildcards
+[ -e "~/.openvpn/config/" ] && complete -o "default" -o "nospace" -W "$(find ~/.openvpn/config/ -name "*.ovpn" )" openvpn
+
+# try to use tab auto-completion for Grunt
+
+# Search the current directory and all parent directories for a gruntfile.
+_grunt_gruntfile()
+{
+  local curpath="$PWD"
+  while [[ "$curpath" ]]; do
+    for gruntfile in "$curpath/"{G,g}runtfile.{js,coffee}; do
+      if [[ -e "$gruntfile" ]]; then
+        echo "$gruntfile"
+        return
+      fi
+    done
+    curpath="${curpath%/*}"
+  done
+  return 1
+}
+
+# Enable bash autocompletion.
+_grunt_completions()
+{
+  # The currently-being-completed word.
+  local cur="${COMP_WORDS[COMP_CWORD]}"
+  # The current gruntfile, if it exists.
+  local gruntfile="$(_grunt_gruntfile)"
+  # The current grunt version, available tasks, options, etc.
+  local gruntinfo="$(grunt --version --verbose 2>/dev/null)"
+  # Options and tasks.
+  local opts="$(echo "$gruntinfo" | awk '/Available options: / {$1=$2=""; print $0}')"
+  local compls="$(echo "$gruntinfo" | awk '/Available tasks: / {$1=$2=""; print $0}')"
+  # Only add -- or - options if the user has started typing -
+  [[ "$cur" == -* ]] && compls="$compls $opts"
+  # Tell complete what stuff to show.
+  COMPREPLY=($(compgen -W "$compls" -- "$cur"))
+}
+
+[ -x /usr/bin/grunt ] && complete -o default -F _grunt_completions grunt

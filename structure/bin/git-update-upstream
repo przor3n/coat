@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if [ -z $1 ]; then
+	echo "You must tell which branch to update"
+	exit
+fi
+
+if [ ! -z $2 ] && [ $2 == "return" ] ; then
+	RETURN_BRANCH=`git rev-parse --abbrev-ref HEAD`
+fi
+
+BRANCH=$1
+
+git checkout -- .idea/nutricia.iml
+git checkout $BRANCH
+git fetch upstream
+git merge upstream/$BRANCH
+git push origin $BRANCH
+
+if [ -n "$RETURN_BRANCH" ]; then
+	git checkout $RETURN_BRANCH
+	git rebase $BRANCH
+fi
+ 
