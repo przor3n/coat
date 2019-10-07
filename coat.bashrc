@@ -13,6 +13,7 @@ source ~/.coat/modules/variables.brc
 # autocomplete
 #########################
 
+# load all files with autocomplete
 AUTOCOMPLETE_FILES="$HOME/.coat/autocomplete/*"
 for _complete__file in $AUTOCOMPLETE_FILES
 do
