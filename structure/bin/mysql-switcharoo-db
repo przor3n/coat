@@ -1,7 +1,0 @@
-#!/bin/bash
-
-db=$1
-filename=$2
-
-mysql-clean-db $db
-mysql-import-db $db $filename

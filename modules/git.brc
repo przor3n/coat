@@ -51,9 +51,8 @@ export -f kit > /dev/null
 
 PROMPT_COMMAND="find_git_branch; find_git_dirty; $PROMPT_COMMAND"
 
-
-cite 'about-alias'
-about-alias 'common git abbreviations'
+# recite 'about-alias'
+# about-alias 'common git abbreviations'
 
 # Aliases
 alias gcl='git clone'
@@ -140,6 +139,9 @@ alias gstp="git stash pop"
 alias gh='cd "$(git rev-parse --show-toplevel)"'
 # Show untracked files
 alias gu='git ls-files . --exclude-standard --others'
+
+alias gsa='git submodule add'
+
 
 case $OSTYPE in
   darwin*)

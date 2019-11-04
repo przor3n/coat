@@ -1,3 +1,7 @@
+# make folders
+mkdir ~/archive ~/bin ~/docs ~/range ~/workshops ~/library ~/temp ~/Portal ~/sync ~/junkyard
+
+
 # run fzf install
 sh lib/fzf/install
 

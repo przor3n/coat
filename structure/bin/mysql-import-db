@@ -1,9 +1,0 @@
-#!/bin/bash
-
-db=$1
-filename=$2
-
-if [ "" != $db ] && [ "" != $filename ]
-then
-    mysql $db < $filename
-fi

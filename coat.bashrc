@@ -37,6 +37,8 @@ source ~/.coat/modules/spells.brc
 
 source ~/.coat/modules/bookmarks.brc
 
+source ~/.coat/modules/cookiecutter.brc
+
 # prompt is going last
 # you can use stuff from other modules here
 source ~/.coat/modules/prompt.brc
