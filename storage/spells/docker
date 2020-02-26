@@ -1,0 +1,8 @@
+docker container ls
+docker container ls -a
+
+docker-compose up
+docker-compose down
+
+read -p 'container: ' container;read -p 'command: ' command; docker-compose exec $container $command
+

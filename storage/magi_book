@@ -1,3 +1,33 @@
 pwd
 ls
 ls -lta
+ansible localhost -a 'ping -w 1 192.168.8.108'
+ansible localhost -a 'whoami' -u git
+ansible localhost -a 'whoami' -u ansel
+ansible localhost -a 'whoami' -u jerry
+
+echo "find and copy certain files"; find docs/ -name '*.pdf' -exec cp --parents '{}' ~/archive/docs-books \;
+
+echo "find and rename contents"; find . -name "*.php" -exec sed -i -e 's/PLUGIN_NAME/DONATE_PAYU/g' {} +
+
+echo "change author and email in git repo"; git filter-branch -f --env-filter "GIT_AUTHOR_NAME='Oren'; GIT_AUTHOR_EMAIL='redcat7@gmail.com'; GIT_COMMITTER_NAME='Przemek'; GIT_COMMITTER_EMAIL='przemyslaw.kot@gmail.com';" HEAD
+
+mysql -u username -p database_name < file.sql
+
+docker container ls
+docker container ls -a
+
+sudo useradd -G postgres,mysql,git,docker,ssh -m -p 'oddL!ft21' -s /bin/bash jerry
+
+echo "virtualbox squid postgresql mysql openvpn" | xargs -I {} sudo service {} stop
+sudo update-alternatives --config python
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 2
+
+echo "scan network"; sudo nmap -sS 192.168.8.*
+echo "login to lucifer"; ssh lucifer@whereibend.space
+echo "git-remove files set to delete"; gs | grep deleted | awk '{ print  }' | xargs git rm
+echo "make direnv"; direnv allow .; > .envrc
+ spellcast
+ source ~/.coat/modules/spells.brc
+ ifconfig -a | grep inet
+ ls | tr . ' ' | awk '{ print $1 }' | xargs -I{} mv {}.brc {}.sh

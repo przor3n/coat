@@ -1,0 +1,23 @@
+-r requirements.txt
+
+pip
+bump2version
+wheel
+watchdog
+flake8
+tox
+coverage
+Sphinx
+twine
+setuptools
+autopep8
+pycco
+pycodestyle
+
+pytest
+pytest-runner
+pyflakes
+pylint
+factory-boy
+# sudo python3 -m easy_install clonedigger
+

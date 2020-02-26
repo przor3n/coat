@@ -44,3 +44,6 @@
 
 ;; sr speedbar
 (require 'sr-speedbar)
+
+
+(global-set-key [f8] 'neotree-toggle)
