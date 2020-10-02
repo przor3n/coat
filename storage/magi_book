@@ -31,3 +31,4 @@ echo "make direnv"; direnv allow .; > .envrc
  source ~/.coat/modules/spells.brc
  ifconfig -a | grep inet
  ls | tr . ' ' | awk '{ print $1 }' | xargs -I{} mv {}.brc {}.sh
+ find . -type f -exec sed -i 's/copypaster/folders/g' {} +

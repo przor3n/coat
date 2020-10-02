@@ -1264,18 +1264,19 @@ digga()
 # gid: Install Grunt plugins and add them as `devDependencies` to `package.json`
 #
 # usage: gid contrib-watch contrib-uglify
-gid()
-{
-  npm install --save-dev ${*/#/grunt-}
-}
+#gid()
+#{
+#  npm install --save-dev "${*/#/grunt-}"
+#}
 
 # -------------------------------------------------------------------
 # gi: Install Grunt plugins and add them as `dependencies` to `package.json`
 #
 # usage: gi contrib-watch contrib-uglify
-gi() {
-  npm install --save ${*/#/grunt-}
-}
+#gi()
+#{
+#  npm install --save "${*/#/grunt-}"
+#}
 
 # -------------------------------------------------------------------
 # `m`: with no arguments opens the current directory in TextMate, otherwise
