@@ -1,11 +1,21 @@
 #!/bin/bash
 export MAGI_BOOK=~/.coat/storage/magi_book
+export SHELL_SNIPPETS=~/.coat/storage/shell_snippets
+export DIRTY_NOTES=~/.coat/storage/dirty_notes
+export NET_SPELLS=~/.coat/storage/spells/network
+
 unalias spell_find 2>/dev/null                                                 
 
-spellcast() {                                                                      
-    eval "`cat $MAGI_BOOK | fzf`"                                                        
-}                                           
+function eval_line_with_fzf {
+    eval "`cat $1 | fzf`"
+}
+
+alias spellcast='eval_line_with_fzf $MAGI_BOOK'
 alias sp='spellcast'
+
+
+alias shellsnip='eval_line_with_fzf $SHELL_SNIPPETS'
+alias netspells='eval_line_with_fzf $NET_SPELLS'
 
 
 ansible_command() {
@@ -46,8 +56,15 @@ spellsave () {
     history | fzf | awk -e '{ $1=""; print $0 }' >> $MAGI_BOOK
 }
 
-alias spelledit='nano $MAGI_BOOK'
+dirtynotes() {
+    history | fzf | awk -e '{ $1=""; print $0 }' >> $DIRTY_NOTES
+}
+cleardirtynotes() {
+    > $DIRTY_NOTES
+}
 
+
+alias spelledit='nano $MAGI_BOOK'
 alias linkdocs='find ~/docs/ -path *.git -prune -o -type f -print | fzf | xargs ln -s'
 alias vdocs='find ~/docs/ -path *.git -prune -o -type f -print | fzf | xargs vim'
 alias putgitignore='find ~/libraly/gitignores -path *.git -prune -o -type f -print | fzf | xargs -I{} cp "{}" . '

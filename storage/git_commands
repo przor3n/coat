@@ -80,3 +80,18 @@ echo "Show ignored files"; git ls-files . --ignored --exclude-standard --others
 echo "show untracked files"; git ls-files . --exclude-standard --others
 echo "Show commits since last pull"; git log HEAD@{1}..HEAD@{0}
 echo "Add uncommitted and unstaged changes to the last commit"; git commit -a --amend -C HEAD
+
+echo "checkout git branch"; fbr
+echo "checkout git branch/tag"; fco
+
+echo "make working"; git checkout -b working
+echo "removeworking"; git branch -D working
+
+echo "start working branch cycle"; startnewwork
+
+echo "show git logs"; showgitlogs
+echo "squash current branch"; squashcurrent
+
+
+
+
