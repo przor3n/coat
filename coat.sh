@@ -44,7 +44,7 @@ source ~/.coat/modules/coat.sh
 source ~/.coat/modules/spells.sh
 source ~/.coat/modules/bookmarks.sh
 source ~/.coat/modules/cookiecutter.sh
-
+source ~/.coat/modules/shortcuts.sh
 # if [ ! -n "$TMUX" ]; then
 #    export TMUX=1
 #    tmux

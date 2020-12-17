@@ -11,14 +11,16 @@ mysql -u username -p database_name < file.sql
 docker container ls
 docker container ls -a
 
-sudo useradd -G postgres,mysql,git,docker,ssh -m -p 'oddL!ft21' -s /bin/bash jerry
+sudo useradd -G postgres,mysql,git,docker,ssh -m -p 'password' -s /bin/bash jerry
 
 echo "virtualbox squid postgresql mysql openvpn" | xargs -I {} sudo service {} stop
 sudo update-alternatives --config python
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 2
 
 echo "scan network"; sudo nmap -sS 192.168.8.*
-echo "login to lucifer"; ssh lucifer@whereibend.space
+echo "show apps connections with ports"; netstat -A inet -pa
+echo "show routing table"; netstat -r
+ 
 echo "git-remove files set to delete"; gs | grep deleted | awk '{ print  }' | xargs git rm
 echo "make direnv"; direnv allow .; > .envrc
 
@@ -60,5 +62,10 @@ echo "change author and email in git repo"; git filter-branch -f --env-filter "G
 
 echo "rename tmux window"; read -p "Tmux window name: " window_name; tmux rename-window $window_name
 echo "reload spells"; source ~/.coat/modules/spells.sh
+echo "reload all/coat"; source ~/.coat/coat.sh
+
 
 echo "show all services"; service --status-all
+ sudo usermod -aG sudo flowi
+ sudo useradd -g ziomeczki -m -p iowlf flowi
+ sudo groupadd ziomeczk

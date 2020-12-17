@@ -2,7 +2,6 @@
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias cd='BACK=`pwd`;cd'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -24,15 +23,17 @@ alias editbash='nano ~/.bashrc'
 #   exit "${E_DID_NOTHING}"
 # fi
 #
-err()
-{
-  echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $@" >&2
+err() {
+  args="$@"
+  echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: ${args}" >&2
 }
 
 # -------------------------------------------------------------------
 # cd: this will overwrite the default "cd"-command
-cd()
-{
+
+function cd {
+  export BACK="$(pwd)"
+
   if [[ "x$*" == "x..." ]]; then
     cd ../..
   elif [[ "x$*" == "x...." ]]; then
@@ -47,6 +48,8 @@ cd()
   else
     builtin cd "$@"
   fi
+
+  pwd > ~/temp/current_dir
 }
 
 # -------------------------------------------------------------------
@@ -747,7 +750,7 @@ mkd()
 # usage: mkf /tmp/lall/foo.txt
 mkf()
 {
-  mkd $(dirname "$@") && touch $@
+  mkd $(dirname "$@") && touch "$@"
 }
 
 # -------------------------------------------------------------------
@@ -1243,7 +1246,7 @@ t()
 # usage: httpDebug http://github.com
 httpDebug()
 {
-  curl $@ -o /dev/null -w "dns: %{time_namelookup} connect: %{time_connect} pretransfer: %{time_pretransfer} starttransfer: %{time_starttransfer} total: %{time_total}\n"
+  curl "$@" -o /dev/null -w "dns: %{time_namelookup} connect: %{time_connect} pretransfer: %{time_pretransfer} starttransfer: %{time_starttransfer} total: %{time_total}\n"
 }
 
 # -------------------------------------------------------------------
