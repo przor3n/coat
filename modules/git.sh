@@ -35,20 +35,6 @@ find_git_dirty() {
   fi
 }
 
-# fuzzy search for git commands
-export GIT_COMMANDS_FILE=~/.coat/git_commands
-
-unalias kit 2> /dev/null
-kit() {
-   local dest_dir=$(cat $GIT_COMMANDS_FILE | fzf )
-   if [[ $dest_dir != '' ]]; then
-      coms = $(echo $dest_dir | tr "#" " ")
-      `$dest_dir`
-   fi
-}
-export -f kit > /dev/null
-
-
 PROMPT_COMMAND="find_git_branch; find_git_dirty; $PROMPT_COMMAND"
 
 # fbr - checkout git branch (including remote branches), sorted by most recent commit, limit 30 last branches
