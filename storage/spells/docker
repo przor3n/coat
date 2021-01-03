@@ -1,0 +1,34 @@
+docker container ls
+docker container ls -a
+
+docker-compose up
+docker-compose down
+
+read -p 'container: ' container;read -p 'command: ' command; docker-compose exec $container $command
+
+echo "docker clean"; docker-compose rm; docker volume prune
+echo "docker update; docker-compose pull
+echo "docke build"; docker build -t $(IMAGE_NAME):latest .
+echo "clean all volumes"; docker volume rm $(docker volume ls -qf dangling=true); docker volume ls -qf dangling=true | xargs -r docker volume rm
+echo "docker ps"; docker ps
+echo "docker ps -a"; docker ps -a
+echo "remove not working containers"; docker rm $(docker ps -qa --no-trunc --filter "status=exited")
+echo "go to container console"; docker exec -it $(CONTAINER_NAME) /bin/bash
+echo "remove dangling images"; docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
+echo "remove images"; docker rmi $(docker images | grep "none" | awk '/ / { print $3 }')
+echo "show networks"; docker network ls
+echo "show bridge networks"; docker network ls | grep "bridge"
+echo "remove bridge networks"; docker network rm $(docker network ls | grep "bridge" | awk '/ / { print $1 }') 
+echo "prune volumes"; docker volume prune
+echo "remove image"; docker rmi $(IMAGE_NAME)
+echo "remove container"; docker rm $(CONTAINER_NAME)
+
+echo "start container"; docker start $(CONTAINER_NAME)
+
+echo "stop container"; docker stop $(CONTAINER_NAME)
+
+echo "restart container"; docker restart $(CONTAINER_NAME)
+
+echo "inspect container"; docker inspect $(CONTAINER_NAME)
+
+echo "display container logs"; docker logs $(CONTAINER_NAME)

@@ -1,0 +1,8 @@
+echo "Basic python Module"; cookiecutter https://github.com/audreyr/cookiecutter-pypackage
+echo "Minimal python module"; cookiecutter https://github.com/wdm0006/cookiecutter-pipproject
+echo "Tornado Boiler[never used]"; cookiecutter https://github.com/hkage/cookiecutter-tornado
+echo "Common lisp"; cookiecutter https://github.com/svetlyak40wt/cookiecutter-cl-project
+echo "Flask with Boilerplate4"; cookiecutter https://github.com/cookiecutter-flask/cookiecutter-flask
+echo "Flask Foundation"; cookiecutter https://github.com/JackStouffer/cookiecutter-Flask-Foundation/tree/master/%7B%7Bcookiecutter.repo_name%7D%7D
+echo "Ansible Colleciton template"; cookiecutter https://github.com/bcoca/collection.git
+

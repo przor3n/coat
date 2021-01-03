@@ -1,0 +1,3 @@
+echo "list all IPs"; ifconfig -a | grep inet | awk '{ print $2 }'
+
+echo "scan passively using arp"; sudo netdiscovery -p

@@ -1,0 +1,18 @@
+echo "list all"; ls -lta
+
+echo "replace PATH OLD NEW"; replace $1 $2 $3
+echo "find and copy certain files"; find docs/ -name $1 -exec cp --parents '{}' ~/$2/$3 \;
+echo "find and replace contents"; find . -name "*.php" -exec sed -i -e 's/PLUGIN_NAME/DONATE_PAYU/g' {} +
+echo "find and grep"; find . -type f -iname "*.java" -exec grep -L "something somethin" {} \+
+echo "find and sort by size"; find . -type f  -exec du -h {} + | sort -r -h
+echo "find with date"; find . -type f -ls | grep "$1"
+echo "find newest files"; find . -type f -printf '%T@ %p\n' | sort -n | tail -1 | cut -f2- -d" "
+echo "find files with timestamp"; find . -type f -printf '%TY-%Tm-%Td %TH:%TM: %Tz %p\n'| sort -n | tail -n1
+echo "find files with ls data"; find -ls
+
+echo "open nautilus here"; open_nautilus
+echo "show process ids"; processids $@
+echo "kill krush and destroy, a process"; kknd $1
+
+
+echo "what the fuck is this"; wtfis $1

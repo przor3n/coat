@@ -1,0 +1,12 @@
+#!/bin/bash
+
+export NAMESPACE="wordpress"
+export PROJECT="donate-payu"
+export PROJECT_ROOT=`pwd`
+
+export CONTEXT="wordpress, php"
+
+#export DB_CONNECTION=""
+#export DB_SCHEMA=$NAMESPACE
+
+export COMPOSE_FILE="docker-compse.yml"

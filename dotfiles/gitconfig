@@ -1,0 +1,9 @@
+[user]
+	name = Oren
+	email = redcat7@gmail.com
+[core]
+	autocrlf = input
+[push]
+	default = simple
+[cola]
+	spellcheck = false

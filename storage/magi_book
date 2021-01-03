@@ -1,0 +1,79 @@
+
+ansible localhost -a 'ping -w 1 192.168.8.108'
+ansible localhost -a 'whoami' -u git
+ansible localhost -a 'whoami' -u ansel
+ansible localhost -a 'whoami' -u jerry
+
+
+
+mysql -u username -p database_name < file.sql
+
+docker container ls
+docker container ls -a
+
+sudo useradd -G postgres,mysql,git,docker,ssh -m -p 'password' -s /bin/bash jerry
+
+echo "virtualbox squid postgresql mysql openvpn" | xargs -I {} sudo service {} stop
+sudo update-alternatives --config python
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 2
+
+echo "scan network"; sudo nmap -sS 192.168.8.*
+echo "show apps connections with ports"; netstat -A inet -pa
+echo "show routing table"; netstat -r
+ 
+echo "git-remove files set to delete"; gs | grep deleted | awk '{ print  }' | xargs git rm
+echo "make direnv"; direnv allow .; > .envrc
+
+ source ~/.coat/modules/spells.brc
+ ifconfig -a | grep inet
+ ls | tr . ' ' | awk '{ print $1 }' | xargs -I{} mv {}.brc {}.sh
+
+
+echo "search manuals"; fman
+echo "find process and kill"; fkill
+echo "find and save a command"; spellsave
+echo "save dirty note"; dirtynotes
+echo "clear dirty notes"; cleardirtynotes
+echo "link docs"; linkdocs
+echo "put gitignore"; putgtignore
+echo "use Cookiecutter"; makecookie
+
+echo "start autocommit"; auto-commit
+echo "stop autocommit"; stop-autocommit
+
+echo "git spells"; kit
+echo "shell spells"; shellsnip
+echo "ansible spells"; ansible_command
+
+echo "start clocking task"; watson_start
+echo "stop clocking  task"; watson_stop
+
+echo "start python http server :8000"; runserver
+echo "start php server :8000"; php -S 127.0.0.1:8000
+
+echo "mark waypoint here"; mark
+echo "display waypoint name"; spot
+echo "goto waypoint"; goto
+
+echo "teleport to..."; cdg
+echo "save current location in teleporter"; bookmarkfolder
+ 
+echo "change author and email in git repo"; git filter-branch -f --env-filter "GIT_AUTHOR_NAME='Oren'; GIT_AUTHOR_EMAIL='redcat7@gmail.com'; GIT_COMMITTER_NAME='Przemek'; GIT_COMMITTER_EMAIL='przemyslaw.kot@gmail.com';" HEAD
+
+echo "rename tmux window"; read -p "Tmux window name: " window_name; tmux rename-window $window_name
+echo "reload spells"; source ~/.coat/modules/spells.sh
+echo "reload all/coat"; source ~/.coat/coat.sh
+
+
+echo "show all services"; service --status-all
+echo "add user to sudoers"; sudo usermod -aG sudo user
+echo "add user"; sudo useradd -g ziomeczki -m -p password flowi
+echo "group add"; sudo groupadd ziomeczk
+
+echo "show modified files from last 7 days"; find . -type f -mtime +1 -mtime -7 ! -path "*.git*"
+echo "show modified files from last 30 days"; find . -type f -mtime +1 -mtime -30 ! -path "*.git*"
+echo "show modified files from last 60 days"; find . -type f -mtime +1 -mtime -60 ! -path "*.git*"
+echo "show path where i worked"; find . -maxdepth 2 -type d -mtime +1 -mtime -35 ! -path "*.git*" ! -path "*.venv*"
+
+
+echo "move files of certain type"; rsync -rv --include '*/' --include '*.js' --exclude '*' --prune-empty-dirs Source/ Target/

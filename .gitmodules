@@ -1,0 +1,11 @@
+[submodule "lib/fzf"]
+	path = lib/fzf
+	url = https://github.com/junegunn/fzf.git
+
+[submodule "paczki"]
+        path = paczki
+        url = https://github.com/junegunn/fzf.git
+
+[submodule "emacs/code/yasnippet"]
+	path = emacs/code/yasnippet
+	url = https://github.com/joaotavora/yasnippet

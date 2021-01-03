@@ -1,0 +1,2 @@
+echo "first login"; sudo -u postgres psql
+echo "create user"; sudo createuser -U postgres -d -e -E -l -P -r -s red
