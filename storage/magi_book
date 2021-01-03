@@ -77,3 +77,4 @@ echo "show path where i worked"; find . -maxdepth 2 -type d -mtime +1 -mtime -35
 
 
 echo "move files of certain type"; rsync -rv --include '*/' --include '*.js' --exclude '*' --prune-empty-dirs Source/ Target/
+echo "list biggest files in folder"; du -ha . | sort -n -r | head -n 20
