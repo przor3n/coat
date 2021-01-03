@@ -74,3 +74,6 @@ echo "show modified files from last 7 days"; find . -type f -mtime +1 -mtime -7 
 echo "show modified files from last 30 days"; find . -type f -mtime +1 -mtime -30 ! -path "*.git*"
 echo "show modified files from last 60 days"; find . -type f -mtime +1 -mtime -60 ! -path "*.git*"
 echo "show path where i worked"; find . -maxdepth 2 -type d -mtime +1 -mtime -35 ! -path "*.git*" ! -path "*.venv*"
+
+
+echo "move files of certain type"; rsync -rv --include '*/' --include '*.js' --exclude '*' --prune-empty-dirs Source/ Target/
