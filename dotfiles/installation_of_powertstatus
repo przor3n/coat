@@ -1,0 +1,33 @@
+gogh themes are cool. but to run them i had to create twice, a gnome-terminal
+profile named `Default`. After that you have to run the gogh installing
+command and run that.
+
+I install powerline-status
+
+pip install powerline-status
+pip install --user powerline-gitstatus
+this goes to bash:
+````
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+. $HOME/lib/python/site-packages/powerline/bindings/bash/powerline.sh
+```
+
+full path get using `pip show powerline-status`
+
+
+
+install fonts
+sudo apt-get install fonts-powerline
+
+
+my bash:
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+. $HOME/.local/lib/python3.8/site-packages/powerline/bindings/bash/powerline.sh
+
+
+i need to add the config files too
+
