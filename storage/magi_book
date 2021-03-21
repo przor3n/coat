@@ -24,7 +24,7 @@ echo "make direnv"; direnv allow .; > .envrc
 echo "show ips" ifconfig -a | grep inet
  ls | tr . ' ' | awk '{ print $1 }' | xargs -I{} mv {}.brc {}.sh
 
-echo "search manuals"; fman
+echo "search manuals"; fmans
 echo "find process and kill"; fkill
 echo "find and save a command"; spellsave
 echo "save dirty note"; dirtynotes
@@ -33,7 +33,7 @@ echo "link docs"; linkdocs
 echo "put gitignore"; putgtignore
 echo "use Cookiecutter"; makecookie
 
-echo "save folder to bookmarks"; spellsave
+echo "save folder to bookmarks"; bookmarkfolder
 
 echo "start autocommit"; auto-commit
 echo "stop autocommit"; stop-autocommit
