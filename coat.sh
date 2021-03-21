@@ -3,6 +3,8 @@
 # Startup
 #########################
 
+export PATH_TO_COAT=`pwd | xargs dirname`
+
 # variables go first
 #start=`date +%s`
 source ~/.coat/modules/variables.sh
@@ -14,6 +16,7 @@ source ~/.coat/modules/variables.sh
 # fuzzy search
 #start=`date +%s`
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+source ~/.coat/lib/forgit/forgit.plugin.sh
 #end=`date +%s`
 #runtime=$((end-start))
 #echo $runtime

@@ -1,3 +1,4 @@
+echo "add"; git add -i
 git clone
 git add
 git rm

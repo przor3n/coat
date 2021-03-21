@@ -1,10 +1,7 @@
 
 ansible localhost -a 'ping -w 1 192.168.8.108'
 ansible localhost -a 'whoami' -u git
-ansible localhost -a 'whoami' -u ansel
 ansible localhost -a 'whoami' -u jerry
-
-
 
 mysql -u username -p database_name < file.sql
 
@@ -24,10 +21,8 @@ echo "show routing table"; netstat -r
 echo "git-remove files set to delete"; gs | grep deleted | awk '{ print  }' | xargs git rm
 echo "make direnv"; direnv allow .; > .envrc
 
- source ~/.coat/modules/spells.brc
- ifconfig -a | grep inet
+echo "show ips" ifconfig -a | grep inet
  ls | tr . ' ' | awk '{ print $1 }' | xargs -I{} mv {}.brc {}.sh
-
 
 echo "search manuals"; fman
 echo "find process and kill"; fkill
@@ -37,6 +32,8 @@ echo "clear dirty notes"; cleardirtynotes
 echo "link docs"; linkdocs
 echo "put gitignore"; putgtignore
 echo "use Cookiecutter"; makecookie
+
+echo "save folder to bookmarks"; spellsave
 
 echo "start autocommit"; auto-commit
 echo "stop autocommit"; stop-autocommit
@@ -60,7 +57,11 @@ echo "save current location in teleporter"; bookmarkfolder
  
 echo "change author and email in git repo"; git filter-branch -f --env-filter "GIT_AUTHOR_NAME='Oren'; GIT_AUTHOR_EMAIL='redcat7@gmail.com'; GIT_COMMITTER_NAME='Przemek'; GIT_COMMITTER_EMAIL='przemyslaw.kot@gmail.com';" HEAD
 
+echo "show manuals"; fmans
 echo "rename tmux window"; read -p "Tmux window name: " window_name; tmux rename-window $window_name
+
+echo "edit spells"; spelledit
+echo "edit git spells"; nano $GIT_COMMANDS_FILE
 echo "reload spells"; source ~/.coat/modules/spells.sh
 echo "reload all/coat"; source ~/.coat/coat.sh
 
@@ -78,3 +79,4 @@ echo "show path where i worked"; find . -maxdepth 2 -type d -mtime +1 -mtime -35
 
 echo "move files of certain type"; rsync -rv --include '*/' --include '*.js' --exclude '*' --prune-empty-dirs Source/ Target/
 echo "list biggest files in folder"; du -ha . | sort -n -r | head -n 20
+ find . -type f | awk -F. '!a[$NF]++{print $NF}'
