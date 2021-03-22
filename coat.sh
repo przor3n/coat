@@ -3,20 +3,16 @@
 # Startup
 #########################
 
-export PATH_TO_COAT=`pwd | xargs dirname`
+export PATH_TO_COAT=~/.coat
 
 # variables go first
-#start=`date +%s`
-source ~/.coat/modules/variables.sh
-#end=`date +%s`
-#runtime=$((end-start))
-#echo $runtime
-
+source $PATH_TO_COAT/modules/variables.sh
 
 # fuzzy search
+# TODO change that commented code into timing function
 #start=`date +%s`
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-source ~/.coat/lib/forgit/forgit.plugin.sh
+source $PATH_TO_COAT/lib/forgit/forgit.plugin.sh
 #end=`date +%s`
 #runtime=$((end-start))
 #echo $runtime
@@ -25,6 +21,7 @@ source ~/.coat/lib/forgit/forgit.plugin.sh
 # autocomplete
 #########################
 
+# TODO: autocomplete causes major slowdowns
 # load all files with autocomplete
 #AUTOCOMPLETE_FILES="$HOME/.coat/autocomplete/*"
 #for _complete__file in $AUTOCOMPLETE_FILES
@@ -49,10 +46,6 @@ source ~/.coat/modules/spells.sh
 source ~/.coat/modules/bookmarks.sh
 source ~/.coat/modules/cookiecutter.sh
 source ~/.coat/modules/shortcuts.sh
-# if [ ! -n "$TMUX" ]; then
-#    export TMUX=1
-#    tmux
-# fi
 
 # prompt is going last
 # you can use stuff from other modules here
