@@ -39,6 +39,7 @@ source ~/.coat/lib/forgit/forgit.plugin.sh
 #########################
 
 source ~/.coat/modules/bash.sh
+source ~/.coat/modules/functions.sh
 source ~/.coat/modules/organization.sh
 source ~/.coat/modules/git.sh
 source ~/.coat/modules/docker.sh

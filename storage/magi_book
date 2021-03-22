@@ -1,3 +1,4 @@
+echo "testing"; echo "$(fill 'podaj tekst: ')"; mkdir "$(fill 'to bedzie folder: ')"
 
 ansible localhost -a 'ping -w 1 192.168.8.108'
 ansible localhost -a 'whoami' -u git
@@ -8,7 +9,7 @@ mysql -u username -p database_name < file.sql
 docker container ls
 docker container ls -a
 
-sudo useradd -G postgres,mysql,git,docker,ssh -m -p 'password' -s /bin/bash jerry
+sudo useradd -G postgres,mysql,git,docker,ssh -m -p "$(fill 'password: ')" -s /bin/bash jerry
 
 echo "virtualbox squid postgresql mysql openvpn" | xargs -I {} sudo service {} stop
 sudo update-alternatives --config python
