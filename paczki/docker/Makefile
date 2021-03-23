@@ -3,11 +3,8 @@
 		    docker-update \
         image run
 
-CONTAINER_NAME=jenks
-IMAGE_NAME=oren-jenkins
-
-ORIGIN=origin
-BRANCH=master
+CONTAINER_NAME=container-name
+IMAGE_NAME=image_name
 
 start:
 	docker start $(CONTAINER_NAME)

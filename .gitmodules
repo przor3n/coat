@@ -6,6 +6,6 @@
         path = paczki
         url = https://github.com/junegunn/fzf.git
 
-[submodule "emacs/code/yasnippet"]
-	path = emacs/code/yasnippet
-	url = https://github.com/joaotavora/yasnippet
+[submodule "lib/forgit"]
+	path = lib/forgit
+	url = https://github.com/wfxr/forgit.git
