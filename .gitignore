@@ -2,6 +2,12 @@
 
 #repositories
 paczki
+lib/forgit
+lib/fzf
+
+# bookmarks
+storage/bookmarks
+storage/spot
 
 #editor
 .idea
