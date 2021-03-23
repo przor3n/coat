@@ -5,11 +5,11 @@ export DIRTY_NOTES=~/.coat/storage/dirty_notes
 export NET_SPELLS=~/.coat/storage/spells/network
 export GIT_COMMANDS_FILE=~/.coat/storage/git_commands
 
-
 unalias spell_find 2>/dev/null                                                 
 
 function eval_line_with_fzf {
-    eval "$(cat $1 | fzf)"
+    command=$(cat $1 | fzf --print-query)
+	xdotool type "${command}"
 }
 
 alias kit='eval_line_with_fzf $GIT_COMMANDS_FILE'

@@ -12,3 +12,5 @@ alias makeactive='source $VENV_FOLDER/bin/activate'
 alias makeactiver='mark; current_dir=`pwd`;while [ $current_dir != "/" ]; do source $current_dir/.venv/bin/activate && break || cd .. && current_dir=`pwd`; done; goto'
 
 alias installrequirements='pip install -r requirements.txt'
+
+alias black='black -Sq'

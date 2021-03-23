@@ -17,4 +17,3 @@ alias phpserver='php -S 127.0.0.1:8000'
 alias lefthandmouse='xmodmap -e "pointer = 3 2 1"'
 alias righthandmouse='xmodmap -e "pointer = 1 2 3"'
 
-
