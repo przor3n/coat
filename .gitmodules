@@ -9,3 +9,6 @@
 [submodule "lib/forgit"]
 	path = lib/forgit
 	url = https://github.com/wfxr/forgit.git
+[submodule "lib/foxer"]
+	path = lib/foxer
+	url = git@github.com:przor3n/foxer.git
