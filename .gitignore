@@ -3,6 +3,9 @@
 #repositories
 paczki
 
+# shell
+.envrc
+
 #editor
 .idea
 

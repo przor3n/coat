@@ -9,6 +9,11 @@ mysql -u username -p database_name < file.sql
 docker container ls
 docker container ls -a
 
+echo "ploteczki"; foxer PLOTECZKI
+echo "working"; foxer working
+echo "searching"; foxer searching
+echo "funs"; foxer funs
+
 sudo useradd -G postgres,mysql,git,docker,ssh -m -p "$(fill 'password: ')" -s /bin/bash jerry
 
 echo "virtualbox squid postgresql mysql openvpn" | xargs -I {} sudo service {} stop

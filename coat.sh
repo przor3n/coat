@@ -13,6 +13,7 @@ source $PATH_TO_COAT/modules/variables.sh
 #start=`date +%s`
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 source $PATH_TO_COAT/lib/forgit/forgit.plugin.sh
+export PATH="$PATH:$PATH_TO_COAT/lib/foxer"
 #end=`date +%s`
 #runtime=$((end-start))
 #echo $runtime
