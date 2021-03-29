@@ -2,6 +2,12 @@
 
 #repositories
 paczki
+lib/forgit
+lib/fzf
+
+# bookmarks
+storage/bookmarks
+storage/spot
 
 # shell
 .envrc
@@ -97,6 +103,7 @@ celerybeat-schedule
 
 # Environments
 .env
+.envrc
 .venv
 env/
 venv/

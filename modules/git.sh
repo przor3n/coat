@@ -35,7 +35,7 @@ find_git_dirty() {
   fi
 }
 
-PROMPT_COMMAND="find_git_branch; find_git_dirty; $PROMPT_COMMAND"
+# PROMPT_COMMAND="find_git_branch; find_git_dirty; $PROMPT_COMMAND"
 
 # fbr - checkout git branch (including remote branches), sorted by most recent commit, limit 30 last branches
 fbr() {
